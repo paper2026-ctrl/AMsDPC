@@ -1,7 +1,8 @@
-function [outputArg1,outputArg2] = Dual(inputArg1,inputArg2)
-%DUAL 此处显示有关此函数的摘要
-%   此处显示详细说明
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
-end
+function [labels] = Dual_tierExpansion(labels, candidate_indices, core_cluster_labels, ...
+                                        KNN, lambda, lambda_std, K)
+  
+ [labels, core_points] = label_propagation(labels, candidate_indices, core_cluster_labels, ...
+                                               KNN, lambda, lambda_std, K);
+ labels = core_diffusion(labels, core_points, KNN, dist, lambda, K);
+ end
 
